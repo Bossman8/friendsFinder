@@ -3,34 +3,88 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Friend Finder</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light" id="navbar" style="background-color: black !important;">
-        <a class="navbar-brand" href="/">
-            <img src="data:image/png;base64,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"
-                width="30" height="30" class="d-inline-block align-top" alt="">
-            <strong id="navText" style="color: white !important;">The Friend Finder</strong>
-        </a>
-        <a href="/api/friends">Friends API</a>
-    </nav>
-    <div class="container" >
-        <div class="jumbotron jumbotron-fluid" id="jumbotron" style="background-color: rgb(201, 233, 243); margin-top: 5%;">
-            <div class="container">
-                <h1 class="display-4">Welcome to Friend Finder!</h1>
-                <p class="lead">Get started by taking our quick survey.</p>
-                <hr>
-                <a href="./survey"><button type="button" class="btn btn-lg btn-primary">Take Survey!</button></a>
+    
+
+    <div class="container">
+
+        <div class="jumbotron" style="opacity: .8;">
+                <a href="/api/friends" style="font-size: 20px; text-align: right;">Friends API</a>
+            <h1 class="text-center">Friend Finder</h1>
+            <h2 class="text-center"></h2>
+            <br>
+
+            <div>
+                <a href="/survey" id="abtn">
+                    <button href="/survey" type="button" class="btn btn-lg btn-primary" style="background-color: black; display: block; margin-left: auto; margin-right: auto;">
+                        <h4> Start Survey</h4>
+                    </button>
+                </a>
+                <br>
+                <button type="button" class="btn btn-lg btn-primary" style="background-color: black; display: block; margin-left: auto; margin-right: auto;"
+                    id="random">
+                    <h4>Random Friend Generator</h4>
+                </button>
+                </a>
             </div>
+
         </div>
+
+        <div id="friendsDiv">
+        </div>
+        <footer class="footer">
+            <div class="container">
+                
+            </div>
+        </footer>
+
     </div>
 
 </body>
+
+
+<script type="text/javascript">
+
+
+
+    $("#random").on("click", function (event) {
+        event.preventDefault();
+        var randomNumber = [Math.floor(Math.random() * 10) + 1];
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8000/api/friends",
+            "method": "GET",
+            "headers": {
+                "cache-control": "no-cache",
+                "postman-token": "22c60936-0016-a8a7-67c5-b2120e4187fd"
+            }
+        }
+
+
+        $.ajax(settings).done(function (response) {
+            var randomPerson = response[Math.floor(Math.random() * 9) + 1];
+            console.log(randomPerson);
+            // console.log(response[Math.floor(Math.random() * 9) + 1].photo);
+            // $(".container").append(response[Math.floor(Math.random() * 9) + 1].photo);
+            // '<img id="theImg" src="\response[Math.floor(Math.random() * 9) + 1].photo\" />'
+            // $(".container").append(`<img id="theImg" src="${response[Math.floor(Math.random() * 9) + 1].photo}" style="height: 40%; width: 40%;"/>`);
+            $("#friendsDiv").prepend(`<div class="card" style="align-self: center; margin-bottom: 20px; background-color: #eaecef;" id="theCard">
+                    <div class="card-body" style"align-self: center;"><h5 class="card-title" id="peopleName" style="text-align: center; font-size: 30px; background-color: #eaecef;">${randomPerson.name}</h5></div></div>
+        <img class="card-img-top" src="${randomPerson.photo}" id="peopleImage" style ="height: 50%; width: 50%; display: block; margin-left: auto; margin-right: auto;"><hr></hr>`);
+
+        });
+    })
+
+</script>
 
 </html>

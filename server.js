@@ -1,21 +1,27 @@
+// Dependencies
+// =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 var http = require("http");
 var fs = require("fs");
 
+// Sets up the Express App
+// =============================================================
 var app = express();
-var PORT = process.env.PORT || 8000;
+// var PORT = process.env.PORT || 3000;
+var PORT = 8000;
 
-app.use(bodyParser.urlencoded({ extended: false }));
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// app.use(function (req, res) {
-//     res.sendFile(path.join(__dirname + "/app/public/home.html"));
-// });
-
-require("./routing/apiRoutes")(app);
 require("./routing/htmRoutes")(app);
+require("./routing/apiRoutes")(app);
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+// Starts the server to begin listening
+// =============================================================
+app.listen(PORT, function() {
+  console.log("App listening on PORT " + PORT);
+});

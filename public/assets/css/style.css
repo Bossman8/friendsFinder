@@ -1,6 +1,6 @@
 body {
-    background-image: url("../images/background.jpg")
+  background-image: url(../images/background.jpg) !important;
 }
-.jumbotron {
-    opacity: .8;
+#abtn {
+  text-decoration: none !important;
 }
